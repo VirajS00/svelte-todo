@@ -1,5 +1,9 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
+
     export let todoItems;
+
+    const dispatch = createEventDispatcher();
 
     let todoName = '';
 
@@ -16,6 +20,10 @@
 
         todoItems = todoItems;
         todoName = '';
+        
+        dispatch('scroll', {
+			text: 'down'
+		});
     }
 
     const clearTodos = () => todoItems = todoItems.filter(x => !x.done);

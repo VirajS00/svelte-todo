@@ -2,6 +2,8 @@
 	import TodoItems from './TodoItems.svelte';
 	import AddTodo from './AddTodo.svelte';
 
+	let scroll;
+
 	let dummyItems = [
         {
 			id: 1,
@@ -18,14 +20,18 @@
 			name: 'Leave home at 2am',
 			done: false
 		},
-    ]
+    ];
+
+	function handleScroll(event) {
+		scroll = event.detail.text;
+	}
 </script>
 
 <main>
 	<div class="todo-container">
 		<h1>Todo List</h1>
-		<TodoItems todoItems={dummyItems} />
-		<AddTodo bind:todoItems={dummyItems} />
+		<TodoItems todoItems={dummyItems} scroll={scroll} />
+		<AddTodo bind:todoItems={dummyItems} on:scroll={handleScroll} />
 	</div>
 </main>
 

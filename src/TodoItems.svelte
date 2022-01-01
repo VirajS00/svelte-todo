@@ -1,5 +1,14 @@
 <script>
+    import { afterUpdate } from 'svelte';
+
     export let todoItems;
+    export let scroll;
+
+    let div;
+
+    afterUpdate(() => {
+        if (scroll == 'down') div.scrollTo(0, div.scrollHeight);
+    });
 </script>
 
 <style>
@@ -52,7 +61,7 @@
     }
 </style>
 
-<div class="all-todos">
+<div class="all-todos" bind:this={div}>
     {#each todoItems as {id, name, done}}
         <label for="{id}" class="todo-container {done?'done':''}">
             <input type="checkbox" id="{id}" bind:checked={done} class="todo-check">
