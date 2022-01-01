@@ -1,8 +1,11 @@
 <script>
     export let todoItems;
+
     let todoName = '';
+
     function addTodo() {
-        let lastId = todoItems[todoItems.length - 1].id;
+        let lastId = todoItems.length === 0 ? 0 : todoItems[todoItems.length - 1].id;
+
         let newId = parseInt(lastId) + 1;
 
         todoItems.push({
@@ -12,7 +15,10 @@
         });
 
         todoItems = todoItems;
+        todoName = '';
     }
+
+    const clearTodos = () => todoItems = todoItems.filter(x => !x.done);
 </script>
 
 <style>
@@ -44,9 +50,18 @@
     .button:hover {
         background-color: rgb(0, 73, 152);
     }
+
+    .clear {
+        background-color: rgb(136, 0, 0);
+    }
+
+    .clear:hover {
+        background-color:rgb(99, 0, 0);
+    }
 </style>
 
 <form on:submit|preventDefault={addTodo}>
     <input type="text" placeholder="Enter ToDo name" class="text-box" bind:value={todoName}>
     <input type="submit" value="Add Todo" class="button">
+    <input type="button" value="Clear" class="button clear" on:click={clearTodos}>
 </form>
