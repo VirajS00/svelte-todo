@@ -12,6 +12,14 @@
 </script>
 
 <style>
+    .empty {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .all-todos {
         display: flex;
         flex-direction: column;
@@ -62,10 +70,16 @@
 </style>
 
 <div class="all-todos" bind:this={div}>
+    {#if todoItems.length === 0}
+        <div class="empty">
+            There is nothing to display here.
+        </div>
+    {:else}
     {#each todoItems as {id, name, done}}
         <label for="{id}" class="todo-container {done?'done':''}">
             <input type="checkbox" id="{id}" bind:checked={done} class="todo-check">
             {name}
         </label>
     {/each}
+    {/if}
 </div>

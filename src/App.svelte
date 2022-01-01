@@ -4,7 +4,7 @@
 
 	let scroll;
 
-	let dummyItems = [
+	let todoItems = [
         {
 			id: 1,
             name: 'Hello',
@@ -30,8 +30,8 @@
 <main>
 	<div class="todo-container">
 		<h1>Todo List</h1>
-		<TodoItems todoItems={dummyItems} scroll={scroll} />
-		<AddTodo bind:todoItems={dummyItems} on:scroll={handleScroll} />
+		<TodoItems todoItems={todoItems} scroll={scroll} />
+		<AddTodo bind:todoItems={todoItems} on:scroll={handleScroll} />
 	</div>
 </main>
 
