@@ -8,22 +8,24 @@
     let todoName = '';
 
     function addTodo() {
-        let lastId = todoItems.length === 0 ? 0 : todoItems[todoItems.length - 1].id;
+        if(todoName !== '') {
+            let lastId = todoItems.length === 0 ? 0 : todoItems[todoItems.length - 1].id;
 
-        let newId = parseInt(lastId) + 1;
+            let newId = parseInt(lastId) + 1;
 
-        todoItems.push({
-            id: newId,
-			name: todoName,
-			done: false
-        });
+            todoItems.push({
+                id: newId,
+                name: todoName,
+                done: false
+            });
 
-        todoItems = todoItems;
-        todoName = '';
-        
-        dispatch('scroll', {
-			text: 'down'
-		});
+            todoItems = todoItems;
+            todoName = '';
+            
+            dispatch('scroll', {
+                text: 'down'
+            });
+        }
     }
 
     const clearTodos = () => todoItems = todoItems.filter(x => !x.done);
