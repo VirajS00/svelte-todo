@@ -1,6 +1,4 @@
 <script>
-	import { writable } from 'svelte/store';
-
 	import TodoItems from './TodoItems.svelte';
 	import AddTodo from './AddTodo.svelte';
 
