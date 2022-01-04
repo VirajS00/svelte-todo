@@ -1,30 +1,19 @@
 <script>
+	import { writable } from 'svelte/store';
+
 	import TodoItems from './TodoItems.svelte';
 	import AddTodo from './AddTodo.svelte';
 
 	let scroll;
 
-	let todoItems = [
-        {
-			id: 1,
-            name: 'Hello',
-            done: false
-        },
-		{
-			id: 2,
-			name: 'Go to the gym',
-			done: true
-		},
-		{
-			id: 3,
-			name: 'Leave home at 2am',
-			done: false
-		},
-    ];
+	let todoItems = JSON.parse(localStorage.getItem("todos"));
+
+	$: localStorage.setItem("todos", JSON.stringify(todoItems));
 
 	function handleScroll(event) {
 		scroll = event.detail.text;
 	}
+
 </script>
 
 <main>
