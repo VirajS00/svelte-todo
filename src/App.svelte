@@ -4,7 +4,7 @@
 
 	let scroll;
 
-	let todoItems = (localStorage.getItem("username") === null) ? [] : JSON.parse(localStorage.getItem("todos"));
+	let todoItems = (localStorage.getItem("todos") === null) ? [] : JSON.parse(localStorage.getItem("todos"));
 
 	$: localStorage.setItem("todos", JSON.stringify(todoItems));
 
